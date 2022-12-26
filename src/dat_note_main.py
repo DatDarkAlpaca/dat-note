@@ -12,6 +12,9 @@ class DatNote(QMainWindow, Ui_DatNote):
         self.current_document_filepath = None
         self.document_name = 'Untitled'
 
+        # Zoom:
+        self.current_zoom = 0
+
         # Connect Signals:
         self.text_edit.textChanged.connect(self.update_preview)
 
@@ -25,6 +28,13 @@ class DatNote(QMainWindow, Ui_DatNote):
         self.action_save.triggered.connect(self.action_file_save)
 
         self.action_save_as.triggered.connect(self.action_file_save_as)
+
+        # Zoom Signals:
+        self.action_zoom_in.triggered.connect(self.action_view_zoom_in)
+
+        self.action_zoom_out.triggered.connect(self.action_view_zoom_out)
+
+        self.action_zoom_restore.triggered.connect(self.action_view_zoom_restore)
 
     def closeEvent(self, event) -> None:
         if not self.text_edit.document().isModified():
@@ -83,3 +93,25 @@ class DatNote(QMainWindow, Ui_DatNote):
             info = QFileInfo(path)
             self.document_name = info.fileName()
             self.update_title()
+
+    # Zooming:
+    def action_view_zoom_in(self):
+        self.text_edit.zoomIn(2)
+        self.current_zoom += 1
+
+    def action_view_zoom_out(self):
+        self.text_edit.zoomOut(2)
+        self.current_zoom -= 1
+
+    def action_view_zoom_restore(self):
+        if self.current_zoom == 0:
+            return
+
+        if self.current_zoom > 0:
+            for _ in range(self.current_zoom):
+                self.text_edit.zoomOut(2)
+        else:
+            for _ in range(abs(self.current_zoom)):
+                self.text_edit.zoomIn(2)
+
+        self.current_zoom = 0

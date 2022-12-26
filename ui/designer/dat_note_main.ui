@@ -114,9 +114,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <property name="title">
       <string>Zoom</string>
      </property>
-     <addaction name="action_zoom_In"/>
-     <addaction name="action_zoom_Out"/>
-     <addaction name="action_restore_default_zoom"/>
+     <addaction name="action_zoom_in"/>
+     <addaction name="action_zoom_out"/>
+     <addaction name="action_zoom_restore"/>
     </widget>
     <addaction name="menu_zoom"/>
     <addaction name="action_status_bar"/>
@@ -263,17 +263,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <string>Word wrap</string>
    </property>
   </action>
-  <action name="action_zoom_In">
+  <action name="action_zoom_in">
    <property name="text">
     <string>Zoom In</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
   </action>
-  <action name="action_zoom_Out">
+  <action name="action_zoom_out">
    <property name="text">
     <string>Zoom Out</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
   </action>
-  <action name="action_restore_default_zoom">
+  <action name="action_zoom_restore">
    <property name="text">
     <string>Restore default zoom</string>
    </property>
