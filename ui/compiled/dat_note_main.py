@@ -112,7 +112,6 @@ class Ui_DatNote(object):
         self.menu_bar.addAction(self.menuView.menuAction())
         self.menu_bar.addAction(self.menuMarkdown.menuAction())
         self.menuFile.addAction(self.action_new)
-        self.menuFile.addAction(self.action_new_window)
         self.menuFile.addAction(self.action_open)
         self.menuFile.addAction(self.action_save)
         self.menuFile.addAction(self.action_save_as)
@@ -139,6 +138,7 @@ class Ui_DatNote(object):
         self.menu_zoom.addAction(self.action_restore_default_zoom)
 
         self.retranslateUi(DatNote)
+        self.action_exit.triggered.connect(DatNote.close)
 
         QMetaObject.connectSlotsByName(DatNote)
     # setupUi
