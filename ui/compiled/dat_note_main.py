@@ -24,7 +24,20 @@ class Ui_DatNote(object):
     def setupUi(self, DatNote):
         if not DatNote.objectName():
             DatNote.setObjectName(u"DatNote")
-        DatNote.resize(603, 411)
+        DatNote.resize(609, 409)
+        DatNote.setStyleSheet(u"QMenuBar\n"
+"{\n"
+"	color: white;\n"
+"	padding-left: 5px;\n"
+"	background: transparent;\n"
+"}\n"
+"\n"
+"QTextEdit\n"
+"{\n"
+"	color: white;\n"
+"	background-color: rgb(39, 39, 39);\n"
+"	border: 0;\n"
+"}")
         self.action_new = QAction(DatNote)
         self.action_new.setObjectName(u"action_new")
         self.action_new_window = QAction(DatNote)
@@ -70,6 +83,7 @@ class Ui_DatNote(object):
         self.central_widget = QWidget(DatNote)
         self.central_widget.setObjectName(u"central_widget")
         self.central_widget.setMinimumSize(QSize(240, 70))
+        self.central_widget.setStyleSheet(u"")
         self.horizontalLayout = QHBoxLayout(self.central_widget)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -84,6 +98,7 @@ class Ui_DatNote(object):
 
         self.text_preview = QTextEdit(self.central_widget)
         self.text_preview.setObjectName(u"text_preview")
+        self.text_preview.setStyleSheet(u"")
         self.text_preview.setReadOnly(True)
 
         self.horizontalLayout.addWidget(self.text_preview)
@@ -91,7 +106,8 @@ class Ui_DatNote(object):
         DatNote.setCentralWidget(self.central_widget)
         self.menu_bar = QMenuBar(DatNote)
         self.menu_bar.setObjectName(u"menu_bar")
-        self.menu_bar.setGeometry(QRect(0, 0, 603, 26))
+        self.menu_bar.setGeometry(QRect(0, 0, 609, 26))
+        self.menu_bar.setStyleSheet(u"")
         self.menuFile = QMenu(self.menu_bar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuEdit = QMenu(self.menu_bar)
@@ -100,8 +116,6 @@ class Ui_DatNote(object):
         self.menuView.setObjectName(u"menuView")
         self.menu_zoom = QMenu(self.menuView)
         self.menu_zoom.setObjectName(u"menu_zoom")
-        self.menuMarkdown = QMenu(self.menu_bar)
-        self.menuMarkdown.setObjectName(u"menuMarkdown")
         DatNote.setMenuBar(self.menu_bar)
         self.status_bar = QStatusBar(DatNote)
         self.status_bar.setObjectName(u"status_bar")
@@ -110,7 +124,6 @@ class Ui_DatNote(object):
         self.menu_bar.addAction(self.menuFile.menuAction())
         self.menu_bar.addAction(self.menuEdit.menuAction())
         self.menu_bar.addAction(self.menuView.menuAction())
-        self.menu_bar.addAction(self.menuMarkdown.menuAction())
         self.menuFile.addAction(self.action_new)
         self.menuFile.addAction(self.action_open)
         self.menuFile.addAction(self.action_save)
@@ -131,8 +144,6 @@ class Ui_DatNote(object):
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.action_font)
         self.menuView.addAction(self.menu_zoom.menuAction())
-        self.menuView.addAction(self.action_status_bar)
-        self.menuView.addAction(self.action_word_wrap)
         self.menu_zoom.addAction(self.action_zoom_in)
         self.menu_zoom.addAction(self.action_zoom_out)
         self.menu_zoom.addAction(self.action_zoom_restore)
@@ -225,6 +236,5 @@ class Ui_DatNote(object):
         self.menuEdit.setTitle(QCoreApplication.translate("DatNote", u"Edit", None))
         self.menuView.setTitle(QCoreApplication.translate("DatNote", u"View", None))
         self.menu_zoom.setTitle(QCoreApplication.translate("DatNote", u"Zoom", None))
-        self.menuMarkdown.setTitle(QCoreApplication.translate("DatNote", u"Markdown", None))
     # retranslateUi
 

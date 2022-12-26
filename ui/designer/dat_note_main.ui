@@ -6,12 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>411</height>
+    <width>609</width>
+    <height>409</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Untitled - Dat Note</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMenuBar
+{
+	color: white;
+	padding-left: 5px;
+	background: transparent;
+}
+
+QTextEdit
+{
+	color: white;
+	background-color: rgb(39, 39, 39);
+	border: 0;
+}</string>
   </property>
   <widget class="QWidget" name="central_widget">
    <property name="minimumSize">
@@ -19,6 +34,9 @@
      <width>240</width>
      <height>70</height>
     </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -61,6 +79,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </item>
     <item>
      <widget class="QTextEdit" name="text_preview">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="readOnly">
        <bool>true</bool>
       </property>
@@ -73,9 +94,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>603</width>
+     <width>609</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -119,18 +143,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <addaction name="action_zoom_restore"/>
     </widget>
     <addaction name="menu_zoom"/>
-    <addaction name="action_status_bar"/>
-    <addaction name="action_word_wrap"/>
-   </widget>
-   <widget class="QMenu" name="menuMarkdown">
-    <property name="title">
-     <string>Markdown</string>
-    </property>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
-   <addaction name="menuMarkdown"/>
   </widget>
   <widget class="QStatusBar" name="status_bar"/>
   <action name="action_new">

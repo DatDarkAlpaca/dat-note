@@ -1,12 +1,16 @@
 from ui.compiled.dat_note_main import Ui_DatNote
-from PySide6.QtWidgets import QMainWindow, QFileDialog, QMessageBox
+from PySide6.QtWidgets import QFileDialog, QMessageBox
 from PySide6.QtCore import QFileInfo
+from win32mica import ApplyMica, MICAMODE
+from src.mica_window import MicaWindow
 
 
-class DatNote(QMainWindow, Ui_DatNote):
-    def __init__(self, parent=None):
-        super(DatNote, self).__init__(parent)
+class DatNote(MicaWindow, Ui_DatNote):
+    def __init__(self):
+        super(DatNote, self).__init__()
         self.setupUi(self)
+
+        ApplyMica(self.menu_bar.winId().__int__(), MICAMODE.DARK)
 
         # Document:
         self.current_document_filepath = None
@@ -40,15 +44,18 @@ class DatNote(QMainWindow, Ui_DatNote):
         if not self.text_edit.document().isModified():
             return
 
-        answer = QMessageBox.question(self, None, "You have unsaved changes. Save before closing?",
-                                      QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
+        answer = QMessageBox(self)
+        answer.setText("You have unsaved changes. Save before closing?")
+        answer.setWindowTitle('Dat Note')
+        answer.setStandardButtons(QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
+        answer.exec()
 
-        if answer & QMessageBox.Save:
+        if answer.result() & QMessageBox.Save:
             self.action_file_save()
             if self.text_edit.document().isModified():
                 event.ignore()
 
-        elif answer & QMessageBox.Cancel:
+        elif answer.result() & QMessageBox.Cancel:
             event.ignore()
 
     # Text Preview:
