@@ -91,7 +91,7 @@ class Ui_DatNote(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.text_edit = QTextEdit(self.central_widget)
         self.text_edit.setObjectName(u"text_edit")
-        self.text_edit.setOverwriteMode(True)
+        self.text_edit.setOverwriteMode(False)
         self.text_edit.setAcceptRichText(False)
 
         self.horizontalLayout.addWidget(self.text_edit)
